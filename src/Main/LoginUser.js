@@ -17,9 +17,10 @@ function LoginUser () {
 
     return(
         <section className="login-user">
-            {users.length>0 && users.map((user, idx) => {
+            {users.length>0 ? users.map((user, idx) => {
                 return <p key={idx}>아이디 : {user.userId} 닉네임 : {user.nickName}</p> 
-            })}
+            }) : <p>현재 로그인 중인 사용자가 없습니다.</p>
+            }
         </section>
     )
 
