@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/GameBrowser/static/css/main.5fc8b2c1.css",
+    "main.js": "/GameBrowser/static/js/main.15548f0c.js",
+    "index.html": "/GameBrowser/index.html",
+    "main.5fc8b2c1.css.map": "/GameBrowser/static/css/main.5fc8b2c1.css.map",
+    "main.15548f0c.js.map": "/GameBrowser/static/js/main.15548f0c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5fc8b2c1.css",
+    "static/js/main.15548f0c.js"
+  ]
+}
