@@ -6,7 +6,11 @@ import axios from "axios";
 function MainPage () {
 
     const logout = async () => {
-
+        const token = JSON.parse(localStorage.getItem('token'))
+        const {data} = await axios.post('/chess/logout', {}, {
+            headers : {'Authorization' : `Bearer ${token}`}
+        })
+        console.log(data)
     }
 
     return(
