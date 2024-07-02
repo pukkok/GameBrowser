@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import LoginPage from './Login/LoginPage';
+import JoinPage from './Login/JoinPage'
+
+import axios from 'axios';
+import MainPage from './Main/Main';
+axios.defaults.baseURL = process.env.REACT_APP_RESTAPI_URL
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+          <Route path='/' element={<MainPage/>}/>
+          <Route path='login' element={<LoginPage/>}/>
+          <Route path='join' element={<JoinPage/>}/>
+      </Routes>
     </div>
   );
 }

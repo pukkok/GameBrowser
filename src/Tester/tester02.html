@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f9fc;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+        .login {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        .box h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .box label {
+            display: block;
+            margin-bottom: 15px;
+        }
+        .box label span {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        .box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .box button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <section className="login">
+        <div className="box join">
+            <h1>회원가입</h1>
+            <form>
+                <label className="nick-name">
+                    <span>닉네임</span>
+                    <input type="text" name="nickName" placeholder="닉네임" onChange={joinInputChange} value={userInfo.nickName}/>
+                </label>
+                <label className="id-label">
+                    <span>ID</span>
+                    <input type="text" name="userId" placeholder="아이디" onChange={joinInputChange} value={userInfo.userId}/>
+                </label>
+                <label className="pw-label">
+                    <span>비밀번호</span>
+                    <input type="password" name="password" placeholder="비밀번호" onChange={joinInputChange} value={userInfo.password}/>
+                </label>
+                <label className="cf-pw-label">
+                    <span>비밀번호 확인</span>
+                    <input type="password" name="confirmPassword" placeholder="비밀번호 확인" onChange={joinInputChange} value={userInfo.confirmPassword}/>
+                </label>
+                
+                <button type="button" onClick={sendUserInfo}>완료</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
