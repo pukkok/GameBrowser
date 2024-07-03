@@ -58,26 +58,26 @@ const ChatComponent = () => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
 
-    useEffect(() => {
-        const eventSource = new EventSource(`${process.env.REACT_APP_RESTAPI_URL}/api/sse`);
+    // useEffect(() => {
+        // const eventSource = new EventSource(`${process.env.REACT_APP_RESTAPI_URL}/api/sse`);
 
-        eventSource.onmessage = (event) => {
-            setMessages((prevMessages) => [...prevMessages, event.data]);
-        };
+        // eventSource.onmessage = (event) => {
+        //     setMessages((prevMessages) => [...prevMessages, event.data]);
+        // };
 
-        return () => {
-            eventSource.close();
-        };
-    }, []);
+        // return () => {
+        //     eventSource.close();
+        // };
+    // }, []);
 
     const sendMsg = async (event) => {
-        event.preventDefault();
+        // event.preventDefault();
 
-        if (message.trim()) {
-            await axios.post('/api/send-message', { message })
+        // if (message.trim()) {
+        //     await axios.post('/api/send-message', { message })
 
-            setMessage('');
-        }
+        //     setMessage('');
+        // }
     };
 
     return (
