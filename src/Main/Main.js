@@ -17,7 +17,7 @@ function MainPage () {
         })
         if(data.code === 200){
             localStorage.clear()
-
+            alert('로그아웃 되었습니다.')
         }
     }
 

@@ -14,6 +14,7 @@ function LoginUser () {
         }
         loginUsersCheck()
     },[])
+    console.log(users)
 
     return(
         <section className="login-user">
