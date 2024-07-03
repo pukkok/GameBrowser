@@ -51,54 +51,50 @@
 // }
 // export default ChattingBox
 
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const ChatComponent = () => {
-    const [ws, setWs] = useState(null);
     const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
-        // WebSocket 서버에 연결
-        const socket = new WebSocket('wss://game-server-phi.vercel.app:8080');
-        setWs(socket);
+        const eventSource = new EventSource(`${process.env.REACT_APP_RESTAPI_URL}/api/sse`);
 
-        socket.onopen = () => {
-            console.log('Connected to WebSocket server');
-        };
-
-        socket.onmessage = (event) => {
+        eventSource.onmessage = (event) => {
             setMessages((prevMessages) => [...prevMessages, event.data]);
         };
 
-        socket.onclose = () => {
-            console.log('Disconnected from WebSocket server');
-        };
-
         return () => {
-            socket.close();
+            eventSource.close();
         };
     }, []);
 
-    const sendMsg = (event) => {
+    const sendMsg = async (event) => {
         event.preventDefault();
-        if (ws && ws.readyState === WebSocket.OPEN) {
-            ws.send('Hello Server!');
+
+        if (message.trim()) {
+            await axios.post('/api/send-message', JSON.stringify({ message }))
+
+            setMessage('');
         }
     };
 
     return (
-        <div>
-            <div className="chatting-box">
-                <div className="chat">
-                    {messages.map((msg, index) => (
-                        <div key={index}>{msg}</div>
-                    ))}
-                </div>
-                <form>
-                    <input />
-                    <button onClick={sendMsg}>전송</button>
-                </form>
+        <div className="chatting-box">
+            <div className="chat">
+                {messages.map((msg, index) => (
+                    <div key={index}>{msg}</div>
+                ))}
             </div>
+            <form onSubmit={sendMsg}>
+                <input 
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="메시지를 입력하세요"
+                />
+                <button type="submit">전송</button>
+            </form>
         </div>
     );
 };
