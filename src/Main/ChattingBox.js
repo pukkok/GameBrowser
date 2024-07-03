@@ -74,7 +74,7 @@ const ChatComponent = () => {
         event.preventDefault();
 
         if (message.trim()) {
-            await axios.post('/api/send-message', JSON.stringify({ message }))
+            await axios.post('/api/send-message', { message })
 
             setMessage('');
         }

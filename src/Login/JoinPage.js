@@ -21,7 +21,7 @@ function JoinPage () {
 
     const sendUserInfo = async (e) => {
         e.preventDefault()
-        const {data} = await axios.post('/chess/join', {
+        const {data} = await axios.post('/user/join', {
             ...userInfo
         })
         alert(data.msg)

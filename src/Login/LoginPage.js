@@ -19,7 +19,7 @@ function LoginPage () {
     }
     const login = async (e) => {
         e.preventDefault()
-        const {data} = await axios.post('/chess/login', {
+        const {data} = await axios.post('/user/login', {
             ...userInfo
         })
         if(data.code === 200){

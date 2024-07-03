@@ -12,7 +12,7 @@ function MainPage () {
         if(!token){
             return alert('로그인도 안했어요!')
         }
-        const {data} = await axios.post('/chess/logout', {}, {
+        const {data} = await axios.post('/user/logout', {}, {
             headers : {'Authorization' : `Bearer ${token}`}
         })
         if(data.code === 200){
